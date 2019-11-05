@@ -1,6 +1,6 @@
 .libPaths("~/~R/library")## need to change to your R package library directory
 return_genotype<-function(pedfile,marker){
-  library(ggplot2)## if not installed, install first
+  if (!require(ggplot2)) install.packages('ggplot2')## if not installed, install first
   ped<-read.table(paste(pedfile,'.ped',sep = ""),header = F)
   map<-read.table(paste(pedfile,".map",sep=""),header = F)
   markers<-read.table(paste(marker,sep=""),header=F)
