@@ -46,4 +46,7 @@ option_list<-list(
 opt_parser<-OptionParser(option_list = option_list)
 opt<-parse_args(opt_parser)
 
+system("module load plink/1.9-180913")
+system(paste("plink --file ",opt$file," --chr-set 38 --extract ",opt$snp," --recode --out ",opt$file,"_extract",sep=""))
 return_genotype(pedfile = opt$file,marker = opt$snp)
+system(paste("rm ",opt$file,"_extract*",sep=""))
